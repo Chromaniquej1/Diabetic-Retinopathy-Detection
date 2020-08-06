@@ -22,7 +22,14 @@ In Keras this can be done via the **keras.preprocessing.image.ImageDataGenerator
 * instantiate generators of augmented image batches (and their labels) via .flow(data, labels) or .flow_from_directory(directory). These generators can then be used with the Keras model methods that accept data generators as inputs, fit_generator, evaluate_generator and predict_generator.
 
 ```Python 
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
+train_datagen = ImageDataGenerator(rescale = 1./255,
+                                   shear_range = 0.2,
+                                   zoom_range = 0.2,
+                                   horizontal_flip = True)
+
+test_datagen = ImageDataGenerator(rescale = 1./255)
 
  ```
 
