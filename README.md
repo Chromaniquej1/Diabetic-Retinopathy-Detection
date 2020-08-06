@@ -34,3 +34,23 @@ test_datagen = ImageDataGenerator(rescale = 1./255)
  ```
 
 ![Resulting Image Examples](https://github.com/gregwchase/eyenet/blob/master/images/readme/17_left_horizontal_white.jpg)
+
+## Transfer Learning in Keras
+Transfer learning generally refers to a process where a model trained on one problem is used in some way on a second related problem.
+Transfer learning has the benefit of decreasing the training time for a neural network model and can result in lower generalization error.
+The weights in re-used layers may be used as the starting point for the training process and adapted in response to the new problem. This usage treats transfer learning as a type of weight initialization scheme. This may be useful when the first related problem has a lot more labeled data than the problem of interest and the similarity in the structure of the problem may be useful in both contexts.
+
+### How to use ResNet50 pre-trained model
+When loading a given model, the “include_top” argument can be set to False, in which case the fully-connected output layers of the model used to make predictions is not loaded, allowing a new output layer to be added and trained. 
+```Python
+resnet=ResNet50(input_shape=IMAGE_SIZE +[3],weights='imagenet',include_top=False)
+
+```
+A model without a top will output activations from the last convolutional or pooling layer directly. One approach to summarizing these activations for thier use in a classifier or as a feature vector representation of input is to add a global pooling layer, such as a max global pooling or average global pooling. The result is a vector that can be used as a feature descriptor for an input. Keras provides this capability directly via the ‘pooling‘ argument that can be set to ‘avg‘ or ‘max‘.
+```python
+x = Flatten()(resnet.output)
+prediction = Dense(5, activation='softmax')(x)
+model = Model(inputs=resnet.input, outputs=prediction)
+
+```
+
