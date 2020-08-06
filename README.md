@@ -7,3 +7,9 @@ The need for a comprehensive and automated method of diabetic retinopathy screen
 
 * Computer Vision image classification has been a personal interest for years, in addition to classification on a large scale data set.
 * Time is lost between patients getting their eyes scanned, having their images analyzed by doctors, and scheduling a follow-up appointment. By processing images in real-time, **ResNet50 model** would allow people to seek & schedule treatment the same day.
+
+## The Dataset
+The data originates from a [2015 Kaggle competition](https://www.kaggle.com/c/diabetic-retinopathy-detection/data). However, is an atypical Kaggle dataset. In most Kaggle competitions, the data has already been cleaned, giving the data scientist very little to preprocess. With this dataset, this isn't the case.
+All images are taken of different people, using different cameras, and of different sizes,this data is extremely noisy, and requires multiple preprocessing steps to get all images to a useable format for training a model.
+
+The training data is comprised of 35,126 images, which are augmented during preprocessing.
