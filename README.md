@@ -23,11 +23,7 @@ In Keras this can be done via the **keras.preprocessing.image.ImageDataGenerator
 
 ```Python 
 
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-train_datagen = ImageDataGenerator(rescale = 1./255,
-                                   shear_range = 0.2,
-                                   zoom_range = 0.2,
-                                   horizontal_flip = True)
+ ```
 
-test_datagen = ImageDataGenerator(rescale = 1./255) 
+![Resulting Image Examples](https://github.com/gregwchase/eyenet/blob/master/images/readme/17_left_horizontal_white.jpg)
