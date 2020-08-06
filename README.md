@@ -13,3 +13,21 @@ The data originates from a [2015 Kaggle competition](https://www.kaggle.com/c/di
 All images are taken of different people, using different cameras, and of different sizes,this data is extremely noisy, and requires multiple preprocessing steps to get all images to a useable format for training a model.
 
 The training data is comprised of 35,126 images, which are augmented during preprocessing.
+
+## Data Pre-processing and data augmentation
+In order to make the most of our few training examples, we will "augment" them via a number of random transformations, so that our model would never see twice the exact same picture. This helps prevent overfitting and helps the model generalize better.
+
+In Keras this can be done via the **keras.preprocessing.image.ImageDataGenerator class**. This class allows you to:
+* configure random transformations and normalization operations to be done on your image data during training
+* instantiate generators of augmented image batches (and their labels) via .flow(data, labels) or .flow_from_directory(directory). These generators can then be used with the Keras model methods that accept data generators as inputs, fit_generator, evaluate_generator and predict_generator.
+
+```Python 
+
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+train_datagen = ImageDataGenerator(rescale = 1./255,
+                                   shear_range = 0.2,
+                                   zoom_range = 0.2,
+                                   horizontal_flip = True)
+
+test_datagen = ImageDataGenerator(rescale = 1./255) 
