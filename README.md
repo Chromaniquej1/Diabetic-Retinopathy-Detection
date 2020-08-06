@@ -59,3 +59,14 @@ Now we’ll talk about the architecture of ResNet50. The architecture of ResNet5
 Finally, the network has an Average Pooling layer followed by a fully connected layer having 1000 neurons (ImageNet class output).
 
 ![](https://i.stack.imgur.com/gI4zT.png)
+
+## Technologies used
+![](https://miro.medium.com/max/600/0*a6XSwHsfvz_oWSSJ.jpg)
+
+## Results
+Note that these results are noted after just **10 epochs** because of less compute power availability, this is expected to give much better accuaracy.
+
+|Metric|Value|
+|---|---|
+|Train(Acc)|60%|
+|Valid(Acc)|40%|
