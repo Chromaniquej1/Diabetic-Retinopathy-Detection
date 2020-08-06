@@ -53,4 +53,9 @@ prediction = Dense(5, activation='softmax')(x)
 model = Model(inputs=resnet.input, outputs=prediction)
 
 ```
+## ResNet50 Model Architecture
+Now we’ll talk about the architecture of ResNet50. The architecture of ResNet50 has 4 stages as shown in the diagram below. The network can take the input image having height, width as multiples of 32 and 3 as channel width. For the sake of explanation, we will consider the input size as 224 x 224 x 3. Every ResNet architecture performs the initial convolution and max-pooling using 7×7 and 3×3 kernel sizes respectively. Afterward, Stage 1 of the network starts and it has 3 Residual blocks containing 3 layers each. The size of kernels used to perform the convolution operation in all 3 layers of the block of stage 1 are 64, 64 and 128 respectively. The curved arrows refer to the identity connection. The dashed connected arrow represents that the convolution operation in the Residual Block is performed with stride 2, hence, the size of input will be reduced to half in terms of height and width but the channel width will be doubled. As we progress from one stage to another, the channel width is doubled and the size of the input is reduced to half.
 
+Finally, the network has an Average Pooling layer followed by a fully connected layer having 1000 neurons (ImageNet class output).
+
+![](https://i.stack.imgur.com/gI4zT.png)
